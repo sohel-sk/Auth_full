@@ -1,22 +1,33 @@
+// import express from 'express';
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDB = require('./config/db.js');
 const cors = require('cors');
-require("dotenv").config({path: __dirname+"/.env"});
-console.log("PORT from .env:", process.env.PORT);
+const authRoutes = require('./routes/auth.js');
+const userRoutes = require('./routes/UserAuth.js');
+const dotenv = require('dotenv');
+const path = require('path');
+const authMiddleware = require('./middleware/AuthMiddleware.js');
+dotenv.config({ path: path.resolve('./backend/.env') });
 const PORT = process.env.PORT;
 
+
 // Initialize Express app
-const app =express();
+const app = express();
+
+connectDB();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connnected!"))
-    .catch((err) => console.log(err));
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+
+
+
     
 // test route 
 
