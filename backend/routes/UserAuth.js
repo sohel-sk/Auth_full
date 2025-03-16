@@ -4,6 +4,6 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/user', AuthMiddleware, profile);
+router.get('/data', AuthMiddleware, profile);
 
 module.exports = router;
