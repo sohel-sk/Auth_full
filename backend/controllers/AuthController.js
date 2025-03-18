@@ -96,7 +96,7 @@ const forgotPassword = async (req, res) => {
     try {
         const user = await userModel.findOne({ email });
 
-        if (!user) return res.status(404).json({ error: "USer not found", message: error.message });
+        if (!user) return res.status(404).json({ error: "User not found", message: error.message });
 
 
         const resetToken = crypto.randomBytes(32).toString('hex');
@@ -121,7 +121,7 @@ const forgotPassword = async (req, res) => {
             from: process.env.EMAIL_USER,
             to: user.email,
             subject: "Password Reset request",
-            text: `Click the link to reset your password : ${process.env.CLIENT_URL}/reset-password/${resetToken}`
+            text: `Click the link to reset your password : ${process.env.CLIENT_URL}/resetpassword/${resetToken}`
         };
         
 
@@ -135,9 +135,11 @@ const forgotPassword = async (req, res) => {
     }
 }
 const resetPassword = async (req, res) => {
+    console.log("here");
     const { token } = req.params;
     const { newPassword } = req.body;
     if (!token || !newPassword) return res.status(400).json({ success: false, message: "Missing Details" });
+    console.log("here");
 
     try {
         const user = await userModel.findOne({
@@ -151,6 +153,7 @@ const resetPassword = async (req, res) => {
         user.resetToken = null;
         user.resetTokenExpiry = null;
         user.save();
+        console.log("here");
 
         res.json({ message: "Password reset successfull!" });
 
@@ -158,5 +161,6 @@ const resetPassword = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 }
+
 
 module.exports = { register, login ,checkVerification ,forgotPassword, resetPassword};

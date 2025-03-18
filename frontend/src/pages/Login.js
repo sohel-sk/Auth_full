@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const Login = () => {
@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-cyan-500 to-blue-600">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
 
@@ -70,7 +70,7 @@ const Login = () => {
                         />
                     </div>
 
-                    <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+                    <button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-2 rounded hover:bg-blue-600">
                         Login
                     </button>
                 </form>
@@ -81,7 +81,10 @@ const Login = () => {
                 </p>
 
                 <p className="text-sm text-gray-500 text-center mt-2">
-                    <a href="/forgot-password" className="text-blue-500 hover:underline">Forgot Password?</a>
+                    {/* <a href="/forgot-password" className="text-blue-500 hover:underline">Forgot Password?</a> */}
+                    <Link to="/forgot-password" className="text-blue-500 hover:underline">
+                            Forgot Password
+                        </Link>
                 </p>
             </div>
         </div>

@@ -25,7 +25,7 @@ const Register = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-500 to-blue-600">
         <div className="bg-white p-6 rounded-lg shadow-md w-80">
         <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
             <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const Register = () => {
             />
             <button
                 type="submit"
-                className="w-full bg-cyan-500 text-white p-2 rounded"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-2 rounded"
                 onClick={(e) => handleSubmit(e)}>
             Register
             </button>
