@@ -35,7 +35,7 @@ const DashBoard = () => {
         }
 
         fetchUserData();
-    });
+    },[navigate]);
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-500 to-blue-600">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
